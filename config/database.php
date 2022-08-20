@@ -1,21 +1,9 @@
 <?php
 
 use Illuminate\Support\Str;
-
+$dbopts = parse_url(getenv('DATABASE_URL'));
 return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Default Database Connection Name
-    |--------------------------------------------------------------------------
-    |
-    | Here you may specify which of the database connections below you wish
-    | to use as your default connection for all database work. Of course
-    | you may use many connections at once using the Database library.
-    |
-    */
-
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pdo.server'),
 
     /*
     |--------------------------------------------------------------------------
@@ -32,8 +20,29 @@ return [
     | choice installed on your machine before you begin development.
     |
     */
-
     'connections' => [
+
+        'pdo.server' => [
+            'driver'   => 'pgsql',
+            'username' => $dbopts["user"],
+            'password' => $dbopts["pass"],
+            'host' => $dbopts["host"],
+            'port' => $dbopts["port"],
+            'database' => ltrim($dbopts["path"],/*'/'*/1),
+
+            // 'driver' => 'pgsql',
+            // 'url' => env('DATABASE_URL'),
+            // 'host' => env('DB_HOST', '127.0.0.1'),
+            // 'port' => env('DB_PORT', '5432'),
+            // 'database' => env('DB_DATABASE', 'forge'),
+            // 'username' => env('DB_USERNAME', 'forge'),
+            // 'password' => env('DB_PASSWORD', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            // 'prefix_indexes' => true,
+            'schema' => 'public',
+            // 'sslmode' => 'prefer',
+        ],
 
         'sqlite' => [
             'driver' => 'sqlite',
