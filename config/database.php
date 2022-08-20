@@ -3,7 +3,7 @@
 use Illuminate\Support\Str;
 $dbopts = parse_url(getenv('DATABASE_URL'));
 return [
-    'default' => env('DB_CONNECTION', 'pdo.server'),
+    'default' => getenv('IS_SERVER')=='true'?'pdo.server':env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
