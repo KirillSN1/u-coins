@@ -13,10 +13,7 @@
          */
         public function getNote($id)
         {
-            $PDO = \DB::connection()->getPdo();
-            $QUERY = $PDO->prepare("SELECT DISTINCT * FROM users");
-            $QUERY->execute();
-            return json_encode($QUERY->fetchAll(PDO::FETCH_OBJ));
+            return 'note';
         }
     }
 ?>

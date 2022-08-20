@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+Route::get('/test', function(){
+    $PDO = \DB::connection()->getPdo();
+    $st = $PDO->prepare("SELECT name FROM test_table");
+    $st->execute();
+    $names = array();
+    while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
+        Log::debug('Row ' . $row['name']);
+        // $app['monolog']->addDebug('Row ' . $row['name']);
+        $names[] = $row;
+    }
+
+    return view('test', [ 'names' => $names ]);
 });
