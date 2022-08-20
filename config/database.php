@@ -28,7 +28,8 @@ return [
             'password' => $dbopts["pass"],
             'host' => $dbopts["host"],
             'port' => $dbopts["port"],
-            'database' => ltrim($dbopts["path"],/*'/'*/1),
+            // 'database' => ltrim($dbopts["path"],'/'),
+            'database' => substr($url["path"], 1),
 
             // 'driver' => 'pgsql',
             // 'url' => env('DATABASE_URL'),
