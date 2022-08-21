@@ -11,7 +11,7 @@
         <ul>
             @foreach ($names as $n)
                 @if ($n)
-                <li> {{ $n }} </li>
+                <li> {{ json_encode($n) }} </li>
                 @else
                 <li>Nameless!</li>
                 @endif
