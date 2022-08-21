@@ -2,8 +2,6 @@
 
 use Illuminate\Support\Str;
 $dbopts = parse_url(getenv('DATABASE_URL'));
-preg_match_all('/\d|\w/',$url["path"], $matches);
-$url["path"] = join('',$matches[0]);
 return [
     'default' => getenv('IS_SERVER')=='true'?'pdo.server':env('DB_CONNECTION', 'mysql'),
 
@@ -30,8 +28,7 @@ return [
             'password' => $dbopts["pass"],
             'host' => $dbopts["host"],
             'port' => $dbopts["port"],
-            // 'database' => ltrim($dbopts["path"],'/'),
-            'database' => 'd4sncfj2ppqkoo',
+            'database' => ltrim($dbopts["path"],'/'),
 
             // 'driver' => 'pgsql',
             // 'url' => env('DATABASE_URL'),
