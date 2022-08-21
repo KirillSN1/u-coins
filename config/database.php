@@ -31,7 +31,7 @@ return [
             'host' => $dbopts["host"],
             'port' => $dbopts["port"],
             // 'database' => ltrim($dbopts["path"],'/'),
-            'database' => substr($url["path"], 1),
+            'database' => 'd4sncfj2ppqkoo',
 
             // 'driver' => 'pgsql',
             // 'url' => env('DATABASE_URL'),
