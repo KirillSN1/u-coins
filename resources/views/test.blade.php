@@ -9,9 +9,9 @@
     <body class="antialiased">
         <p>Got these rows from the database:</p>
         <ul>
-            @foreach (names as n)
-                @if (n.name)
-                <li> {{ n.name }} </li>
+            @foreach ($names as $n)
+                @if ($n)
+                <li> {{ $n }} </li>
                 @else
                 <li>Nameless!</li>
                 @endif
