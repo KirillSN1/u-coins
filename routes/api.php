@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ApiController;
+use App\Http\Controllers\Api\ApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,4 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get("/getNote", [ApiController::class, 'show']);
+Route::get('/getNote/{id?}', [ApiController::class, 'getNote'])->name('getNote');
+Route::get('/getNotes', [ApiController::class, 'getNotes'])->name('getNotes');
+Route::get('/setNote', [ApiController::class, 'setNote'])->name('setNote');
