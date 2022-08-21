@@ -10,8 +10,8 @@
         <p>Got these rows from the database:</p>
         <ul>
             @foreach ($names as $n)
-                @if ($n)
-                <li> {{ json_encode($n) }} </li>
+                @if (isset($n['name']) && $n['name'])
+                <li> {{ $n['name'] }} </li>
                 @else
                 <li>Nameless!</li>
                 @endif
