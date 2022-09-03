@@ -25,7 +25,7 @@
         }
         public function setNote(Request $request)
         {
-            $id = $request->input('id',null);
+            $id = $request->input('id',0);
             $text = $request->input('text',null);
             if(is_null($text)) return Response::json(array(
                 'code'      =>  401,
