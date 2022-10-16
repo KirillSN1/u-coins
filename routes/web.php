@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,4 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+Route::get('/podcasts/{name}.{extension}', function($name, $extension){
+    $file="./podcasts/$name.$extension";
+    return Response::download($file);
 });
